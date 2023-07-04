@@ -15,9 +15,11 @@ RSpec.describe "Landing Page", type: :feature do
 
     it "Has a button to create a new user" do
       visit '/'
-      expect(page).to have_button("Create a New User")
-
-      click_button("Create a New User")
+      
+      within "#new_user" do
+        expect(page).to have_button("Create a New User")
+        click_button("Create a New User")
+      end
       expect(current_path).to eq('/register')
     end
   end
