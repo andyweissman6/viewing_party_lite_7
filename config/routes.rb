@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   get '/register', to: 'users#new'
-  get '/dashboard', to: 'users#show', as: "user"
+  get "/users/:user_id", to: "users#show", as: :dashboard
 end

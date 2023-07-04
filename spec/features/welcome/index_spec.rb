@@ -34,7 +34,8 @@ RSpec.describe "Landing Page", type: :feature do
 
         click_link(@user1.email)
       end
-      expect(current_path).to eq(user_path(@user1))
+      expect(current_path).to eq(dashboard_path(@user1))
+      expect(page).to have_content("#{@user1.name}'s Dashboard")
     end
   end
 end
