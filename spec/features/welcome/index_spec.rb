@@ -6,4 +6,11 @@ RSpec.describe "Landing Page", type: :feature do
     @user1 = User.create!(name: "Tim Timson", email: "Ttimmer@hotmail.com")
     @user1 = User.create!(name: "Google Guy", email: "Google@gmail.com")
   end
+
+  describe "When I visit the Landing Page '/'" do
+    it "I see the title of the Application" do
+      visit '/'
+      expect(page).to have_content("Viewing Party!")
+    end
+  end
 end
