@@ -4,9 +4,9 @@
   <%= button_to "Create a New User", "/register", method: :get %>
 </div>
 
-<div id="existing_users">
+<ul id="existing_users">
   <h3>Existing Users</h3>
     <% @users.each do |user| %>
-      <%= link_to "#{user.email}", dashboard_path(user) %>
+      <li><%= link_to "#{user.email}", dashboard_path(user) %></li>
     <% end %>
-</div>
+</ul>
