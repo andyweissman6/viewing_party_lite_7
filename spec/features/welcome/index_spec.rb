@@ -25,17 +25,25 @@ RSpec.describe "Landing Page", type: :feature do
 
     it "Has a list of existing users as links to their dashboards" do
       visit '/'
-
+      
       within "#existing_users" do
         expect(page).to have_content("Existing Users")
         expect(page).to have_link(@user1.email)
         expect(page).to have_link(@user2.email)
         expect(page).to have_link(@user3.email)
-
+        
         click_link(@user1.email)
       end
       expect(current_path).to eq(dashboard_path(@user1))
       expect(page).to have_content("#{@user1.name}'s Dashboard")
+      
+      visit '/'
+      
+      within "#existing_users" do
+        click_link(@user2.email)
+      end
+      expect(current_path).to eq(dashboard_path(@user2))
+      expect(page).to have_content("#{@user2.name}'s Dashboard")
     end
   end
 end
