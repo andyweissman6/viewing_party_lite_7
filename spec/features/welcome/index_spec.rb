@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "Landing Page", type: :feature do
   before(:each) do
     @user1 = User.create!(name: "Jim Bob", email: "Jbob@somewhere.com")
-    @user1 = User.create!(name: "Tim Timson", email: "Ttimmer@hotmail.com")
-    @user1 = User.create!(name: "Google Guy", email: "Google@gmail.com")
+    @user2 = User.create!(name: "Tim Timson", email: "Ttimmer@hotmail.com")
+    @user3 = User.create!(name: "Google Guy", email: "Google@gmail.com")
   end
 
   describe "When I visit the Landing Page '/'" do
@@ -21,6 +21,20 @@ RSpec.describe "Landing Page", type: :feature do
         click_button("Create a New User")
       end
       expect(current_path).to eq('/register')
+    end
+
+    it "Has a list of existing users as links to their dashboards" do
+      visit '/'
+
+      within "#existing_users" do
+        expect(page).to have_content("Existing Users")
+        expect(page).to have_link(@user1.name)
+        expect(page).to have_link(@user2.name)
+        expect(page).to have_link(@user3.name)
+
+        click_link(@user1.name)
+      end
+      expect(current_path).to eq(user_path(@user1))
     end
   end
 end
