@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Landing Page", type: :feature do
   before(:each) do
-    @user1 = User.create!(name: "Jim Bob", email: "Jbob@somewhere.com")
-    @user2 = User.create!(name: "Tim Timson", email: "Ttimmer@hotmail.com")
-    @user3 = User.create!(name: "Google Guy", email: "Google@gmail.com")
+    @user1 = User.create!(name: 'Jim Bob', email: 'Jbob@somewhere.com')
+    @user2 = User.create!(name: 'Tim Timson', email: 'Ttimmer@hotmail.com')
+    @user3 = User.create!(name: 'Google Guy', email: 'Google@gmail.com')
   end
 
   describe "When I visit the Landing Page '/'" do
@@ -48,18 +48,18 @@ RSpec.describe "Landing Page", type: :feature do
 
     it "Has a link on every page that leads back to Landing Page" do
       visit '/'
-      expect(page).to have_link("Home")
-      click_link("Home")
+      expect(page).to have_link('Home')
+      click_link('Home')
       expect(current_path).to eq('/')
 
       visit(dashboard_path(@user1))
-      expect(page).to have_link("Home")
-      click_link("Home")
+      expect(page).to have_link('Home')
+      click_link('Home')
       expect(current_path).to eq('/')
 
       visit '/register'
-      expect(page).to have_link("Home")
-      click_link("Home")
+      expect(page).to have_link('Home')
+      click_link('Home')
       expect(current_path).to eq('/')
     end
   end
