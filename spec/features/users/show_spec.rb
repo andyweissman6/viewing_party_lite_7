@@ -11,6 +11,17 @@ RSpec.describe "User Dashboard Page '/users/:id'", type: :feature do
     it "Displays the user's name at the top of the page" do
       visit dashboard_path(@user1)
       expect(page).to have_content("#{@user1.name}'s Dashboard")
+      
+      visit dashboard_path(@user2)
+      expect(page).to have_content("#{@user2.name}'s Dashboard")
+    end
+    
+    it "Has a button to discover movies" do
+      visit dashboard_path(@user1)
+      expect(page).to have_button("Discover Movies")
+
+      click_button("Discover Movies")
+      expect(current_path).to eq(discover_path(@user1))
     end
   end
 end
