@@ -25,5 +25,9 @@ RSpec.describe "User Dashboard Page '/users/:id'", type: :feature do
       end
       expect(current_path).to eq(discover_path(@user1))
     end
+
+    xit "Has a section that displays a user's different viewing parties" do
+
+    end
   end
 end
