@@ -36,6 +36,7 @@ RSpec.describe "Landing Page", type: :feature do
       end
       expect(current_path).to eq(dashboard_path(@user1))
       expect(page).to have_content("#{@user1.name}'s Dashboard")
+      expect(page).to_not have_content("#{@user2.name}'s Dashboard")
       
       visit '/'
       
@@ -44,6 +45,7 @@ RSpec.describe "Landing Page", type: :feature do
       end
       expect(current_path).to eq(dashboard_path(@user2))
       expect(page).to have_content("#{@user2.name}'s Dashboard")
+      expect(page).to_not have_content("#{@user1.name}'s Dashboard")
     end
 
     it "Has a link on every page that leads back to Landing Page" do
