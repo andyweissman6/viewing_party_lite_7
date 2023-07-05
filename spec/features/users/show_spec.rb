@@ -18,9 +18,11 @@ RSpec.describe "User Dashboard Page '/users/:id'", type: :feature do
     
     it "Has a button to discover movies" do
       visit dashboard_path(@user1)
-      expect(page).to have_button("Discover Movies")
 
-      click_button("Discover Movies")
+      within '#discover' do
+        expect(page).to have_button("Discover Movies")
+        click_button("Discover Movies")
+      end
       expect(current_path).to eq(discover_path(@user1))
     end
   end
