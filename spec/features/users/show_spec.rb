@@ -27,7 +27,7 @@ RSpec.describe "User Dashboard Page '/users/:id'", type: :feature do
     end
 
     xit "Has a section that displays a user's different viewing parties" do
-
+      
     end
   end
 end
