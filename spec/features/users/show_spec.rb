@@ -25,9 +25,18 @@ RSpec.describe "User Dashboard Page '/users/:id'", type: :feature do
       end
       expect(current_path).to eq(discover_path(@user1))
     end
+    ## revisit once Movie Results Page is complete.
+    xit "Has a section that displays parties a user has been invited to" do
+      within '#invited' do
+        
+      end
+    end
+    
+    ## revisit once Movie Results Page is complete.
+    xit "Has a section that displays a user's hosted parties" do
+      within 'hosted' do
 
-    xit "Has a section that displays a user's different viewing parties" do
-      
+      end
     end
   end
 end
