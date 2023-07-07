@@ -1,0 +1,14 @@
+<h1><%= @user.name %>'s Discovery Page</h1>
+<br>
+<section id="discover_movies">
+<h2>Discover Movies</h2>
+  <%= button_to 'Find Top Rated Movies', user_movies_path(@user), method: :get %>
+</section>
+
+<section id='movie_search'>
+  <%= form_with url: user_movies_path(@user), local: true, method: :get do |form| %>
+    <%= form.label :search, "Movie Title" %>
+    <%= form.text_field :search %>
+    <%= form.submit "Search" %>
+  <% end %>
+</section>
