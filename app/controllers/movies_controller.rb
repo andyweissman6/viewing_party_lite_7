@@ -8,7 +8,10 @@ class MoviesController < ApplicationController
 
     response = conn.get('/3/movie/popular?language=en-US&page=1')
     json = JSON.parse(response.body, symbolize_names: true)
-    @top_movies = json[:results]
+    
     # require 'pry'; binding.pry
+    @top_movies = json[:results].map do |movie_data|
+      Movie.new(movie_data)
+    end
   end
 end
