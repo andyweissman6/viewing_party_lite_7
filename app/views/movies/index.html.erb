@@ -1,7 +1,8 @@
-<h1><%= @top_movies.count %> Results</h1>
-<% @top_movies.each do |movie| %>
-  <ul class="top_movies">
-    <li class="title"><%= movie[:title] %></li>
-    <li class="vote_average"><%= movie[:vote_average] %></li>
+<h1><%= @facade.top_movies.count %> Results</h1>
+<p><%= button_to "Discover Page", discover_path(@user), method: :get %></p>
+<% @facade.top_movies.each do |movie| %>
+  <ul id="top_movies">
+    <li>Title: <%= link_to "#{movie.title}", user_movie_path(@user.id, movie.id) %></li>
+    <li>Vote Average: <%= movie.vote_average %></li>
   </ul>
 <% end %>
