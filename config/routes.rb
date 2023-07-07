@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   get '/users/:user_id', to: 'users#show', as: :dashboard
   get '/users/:user_id/discover', to: 'discover#index', as: :discover
   get '/users/:user_id/movies', to: 'movies#index', as: :user_movies
+
+  get '/users/:user_id/movies/:movie_id', to: 'movies#show', as: :user_movie
+
 end
