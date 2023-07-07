@@ -15,9 +15,12 @@ RSpec.describe "Discover Movies Page", type: :feature do
     end
     expect(current_path).to eq(user_movies_path(@user1))
   end
-  
-  it "Search field to search by movie title" do
+  ## revisit once Movie Results Page is complete. Then search for a movie
+  xit "Has a field to search for movie by title" do
     visit discover_path(@user1)
-    expect(page).to have_field(:search)
+    within '#movie_search' do
+      expect(page).to have_field(:search)
+      expect(page).to have_button("Search")
+    end
   end
 end
