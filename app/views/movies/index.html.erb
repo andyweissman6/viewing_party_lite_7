@@ -1,5 +1,5 @@
-<h1><%= @top_movies.count %> Results</h1>
-<% @top_movies.each do |movie| %>
+<h1><%= @facade.top_movies.count %> Results</h1>
+<% @facade.top_movies.each do |movie| %>
   <ul class="top_movies">
     <li class="title"><%= movie.title %></li>
     <li class="vote_average"><%= movie.vote_average %></li>
