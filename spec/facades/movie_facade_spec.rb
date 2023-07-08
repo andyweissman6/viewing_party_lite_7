@@ -11,7 +11,7 @@ RSpec.describe MovieFacade do
   
   describe "#top_movies" do
     it "returns the top movies" do
-      movies = @mf.top_movies
+      movies = @mf.movie_index
 
       expect(movies).to all be_a Movie
       expect(movies.count <= 20).to be(true)

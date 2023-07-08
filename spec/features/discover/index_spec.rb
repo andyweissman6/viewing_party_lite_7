@@ -27,6 +27,6 @@ RSpec.describe "Discover Movies Page", type: :feature do
     expect(current_path).to eq(user_movies_path(@user1))
     expect(page).to have_content("Fight Club")
     
-    # save_and_open_page
+    save_and_open_page
   end
 end

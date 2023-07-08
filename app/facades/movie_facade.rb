@@ -1,23 +1,17 @@
 class MovieFacade
-  attr_reader :search
-  def initialize
+  def initialize(search = nil)
     @search = search
   end
-  #need to instantiate this^^
 
-  def top_movies
-    #dont name same b/c comfusing
+  def movie_index
     service = MovieService.new
-    json = service.top_movies
-
-    @top_movies = json[:results].map do |movie_data|
-      Movie.new(movie_data)
+    if @search.nil?
+      json = service.top_movies
+    else
+      json = service.movie_search(@search)
     end
-  end
-
-  def movie_search(title)
-    MovieService.movie_search(title)[:results].map do |movie_data|
-      Movie.new(movie)
+    @movies = json[:results].map do |movie_data|
+      Movie.new(movie_data)
     end
   end
 end
