@@ -13,4 +13,8 @@ class MovieService
       f.params['api_key'] = ENV['MOVIE_API_KEY']
     end
   end
+
+  def movie_search(title)
+    get_url("/3/search/movie?query=#{title}")
+  end
 end
