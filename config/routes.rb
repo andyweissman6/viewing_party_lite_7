@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get '/users/:user_id/movies', to: 'movies#index', as: :user_movies
 
   get '/users/:user_id/movies/:movie_id', to: 'movies#show', as: :user_movie
+  get '/users/:user_id/movies/:movie_id/party/new', to: 'parties#new', as: :new_party
 
 end
