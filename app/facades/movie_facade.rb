@@ -1,9 +1,16 @@
 class MovieFacade
-  def top_movies
-    service = MovieService.new
-    json = service.top_movies
+  def initialize(search = nil)
+    @search = search
+  end
 
-    @top_movies = json[:results].map do |movie_data|
+  def movie_index
+    service = MovieService.new
+    if @search.nil?
+      json = service.top_movies
+    else
+      json = service.movie_search(@search)
+    end
+    @movies = json[:results].map do |movie_data|
       Movie.new(movie_data)
     end
   end
