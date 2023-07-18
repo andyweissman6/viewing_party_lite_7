@@ -4,6 +4,10 @@
   <%= button_to "Create a New User", "/register", method: :get %>
 </div>
 
+<div id="login">
+  <%= button_to "I already have an account", login_path, method: :get %>
+</div>
+
 <ul id="existing_users">
   <h3>Existing Users</h3>
     <% @users.each do |user| %>
