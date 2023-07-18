@@ -43,7 +43,6 @@ RSpec.describe "Logging In" do
     fill_in :password, with: "oranges"
 
     click_on "Log In"
-    # save_and_open_page
 
     expect(current_path).to eq(login_path)
 

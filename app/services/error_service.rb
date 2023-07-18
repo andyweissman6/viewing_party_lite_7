@@ -1,9 +1,9 @@
 class ErrorService
-  ERRORS_TO_HUMAN_READABLE = {
+  READABLE_ERRORS = {
       "Email has already been taken" => "Email already exists.",
       "Password confirmation doesn't match Password" => "Passwords do not match.",
   }
-  
+
   attr_reader :error
   def initialize(error)
     @error = error
@@ -11,9 +11,9 @@ class ErrorService
 
   def error_messages
     errors = error.record.errors.map(&:full_message)
-      human_readable_error_messages = errors.map do |error_message|
-        ERRORS_TO_HUMAN_READABLE[error_message]
+      each_error = errors.map do |error_message|
+        READABLE_ERRORS[error_message]
       end
-      human_readable_error_messages.push("Please try again.").join(" ")
+      each_error.push("Please try again.").join(" ")
   end
 end

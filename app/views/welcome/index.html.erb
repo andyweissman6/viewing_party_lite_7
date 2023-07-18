@@ -14,3 +14,7 @@
       <li><%= link_to "#{user.email}", dashboard_path(user) %></li>
     <% end %>
 </ul>
+
+<% if current_user %>
+  <%= link_to "Log Out" %>
+<% end %>
