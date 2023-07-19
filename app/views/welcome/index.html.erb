@@ -11,8 +11,11 @@
 
 
 <ul id="existing_users">
-  <h3>Existing Users</h3>
+  <% if current_user %>
+  <ul id="existing_users">
+    <h3>Existing Users</h3>
     <% @users.each do |user| %>
-      <li><%= link_to "#{user.email}", dashboard_path(user) %></li>
+      <li><%= "#{user.email}" %></li>
     <% end %>
-</ul>
+  </ul>
+<% end %>
