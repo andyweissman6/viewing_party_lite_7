@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Landing Page", type: :feature do
   before(:each) do
-    @user1 = User.create!(name: 'Jim Bob', email: 'Jbob@somewhere.com')
-    @user2 = User.create!(name: 'Tim Timson', email: 'Ttimmer@hotmail.com')
-    @user3 = User.create!(name: 'Google Guy', email: 'Google@gmail.com')
+    @user1 = User.create!(name: 'Jim Bob', email: 'Jbob@somewhere.com', password: '123', password_confirmation: '123')
+    @user2 = User.create!(name: 'Tim Timson', email: 'Ttimmer@hotmail.com', password: '456', password_confirmation: '456')
+    @user3 = User.create!(name: 'Google Guy', email: 'Google@gmail.com', password: '789', password_confirmation: '789')
   end
 
   describe "When I visit the Landing Page '/'" do
@@ -16,14 +16,13 @@ RSpec.describe "Landing Page", type: :feature do
     it "Has a button to create a new user" do
       visit '/'
       
-      within "#new_user" do
-        expect(page).to have_button("Create a New User")
-        click_button("Create a New User")
-      end
+      expect(page).to have_button("Create a New User")
+      click_button("Create a New User")
+      
       expect(current_path).to eq('/register')
     end
 
-    it "Has a list of existing users as links to their dashboards" do
+    xit "Has a list of existing users as links to their dashboards" do
       visit '/'
       
       within "#existing_users" do
@@ -65,4 +64,13 @@ RSpec.describe "Landing Page", type: :feature do
       expect(current_path).to eq('/')
     end
   end
+
+  describe "Task 3: When I visit the Landing Page '/'" do
+    it "no longer see list of existing users" do
+      visit '/'
+      expect(page).to_not have_content('Existing Users')
+      save_and_open_page
+    end
+  end
+
 end
