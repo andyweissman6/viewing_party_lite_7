@@ -1,12 +1,14 @@
 <h1>Viewing Party!</h1>
 
-<div id="new_user">
+<div id="login">
   <%= button_to "Create a New User", "/register", method: :get %>
+  <% if current_user %>
+    <%= button_to "Log Out", logout_path, method: :delete %>
+  <% else %>
+    <%= button_to "Log In", login_path, method: :get  %>
+  <% end %>
 </div>
 
-<div id="login">
-  <%= button_to "I already have an account", login_path, method: :get %>
-</div>
 
 <ul id="existing_users">
   <h3>Existing Users</h3>
