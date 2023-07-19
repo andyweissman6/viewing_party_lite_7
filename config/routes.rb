@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
+  # root 'sessions#index'
   get '/login', to: 'sessions#new', as: :login_form
   post '/login', to: 'sessions#create'
-
+  delete '/logout', to: 'sessions#destroy', as: :logout
+  
   get '/register', to: 'users#new', as: :new_user
   post '/register', to: 'users#create'
   
