@@ -69,8 +69,16 @@ RSpec.describe "Landing Page", type: :feature do
     it "no longer see list of existing users" do
       visit '/'
       expect(page).to_not have_content('Existing Users')
-      save_and_open_page
+    end
+
+    it "try to visit '/welcome' I remain on landing page with message telling me that I must be logged in or registered to access my dashboard" do
+      visit '/'
+      visit dashboard_path
+
+      expect(current_path).to eq('/')
+      expect(page).to have_content('You must be logged in or registered to access a user dashboard.')
     end
   end
+  
 
 end
